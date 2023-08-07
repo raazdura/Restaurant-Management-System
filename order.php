@@ -33,13 +33,13 @@
 				  </a>
 			</li>
 			
-			<li  data-toggle="collapse" data-target="#users" class="collapsed">
+			<!-- <li  data-toggle="collapse" data-target="#users" class="collapsed">
 				<a href="#"><i class="fa fa-user fa-lg"></i> Users <i class="fas fa-caret-down"></i></a>
-			</li>
-			<ul class="sub-menu collapse" id="users">
+			</li> -->
+			<!-- <ul class="sub-menu collapse" id="users">
 				<li><a href="add_user.php">Add Users</a></li>
 				<li><a href="manage_user.php">Manage Users</a></li>
-			</ul>
+			</ul> -->
 
 			<!-- <li data-toggle="collapse" data-target="#groups" class="collapsed">
 				<a href="#"><i class="fa fa-users fa-lg"></i> Group <i class="fas fa-caret-down"></i></a>
@@ -155,10 +155,8 @@
 	<thead class="thead-dark">
 		<tr>
 			<th scope="col">Order ID</th>
-			<th scope="col">Customer Name</th>
 			<th scope="col">Bill Id</th>
 			<th scope="col">Table No</th>
-			<th scope="col">Foods</th>
 			<th scope="col">Time and Date</th>
 			<th scope="col">Total Amoount</th>
 		</tr>
@@ -176,13 +174,9 @@
                 <tr>
                     <td><?php echo $row['o_id']; ?></td>
                     
-                    <td><?php echo $row['c_id']; ?></td>
-                    
                     <td><?php echo $row['bill_id']; ?></td>
                     
                     <td><?php echo $row['t_id']; ?></td>
-
-					<td><?php echo $row['f_id']; ?></td>
                     
                     <td><?php echo $row['o_time']; ?></td>
                     

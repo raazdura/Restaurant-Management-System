@@ -30,7 +30,7 @@
 
   header{
    border: 1px solid black;
-   background-color: lightblue;
+   background-color: #086788;
    height: 100px;
   }
 
@@ -55,10 +55,11 @@
   }
 
   .main-nav li a:link, .main-nav li a:visited{
-    color: black;
+    color: #fff;
     text-decoration:none;
     text-transform:uppercase;
     font-size: 14px;
+    font-weight: 700;
     border-bottom: 2px solid transparent;
     transition:border-bottom .2s;
     /* padding: 5px 0; */
@@ -67,7 +68,7 @@
   }
 
   .main-nav li a:hover, .main-nav li a:active{
-    border-bottom: 2px solid #e74c3c;
+    border-bottom: 2px solid #fff;
     
   }
 
@@ -169,15 +170,16 @@
   .take-order {
     text-align: center;
     padding: 20px;
+    background-color: #f2f4f3;
   }
   .tables {
-    background-color: #555;
+    background-color: #06aed5;
     margin: 20px;
     text-align: center;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
-    gap: 10px;
-    padding: 10px;
+    gap: 20px;
+    padding: 25px;
   }
   h2 {
     width: 100%
@@ -190,22 +192,25 @@
   }
   .tables .table-1 {
     padding: 10px;
-    background-color: #e74c3c;
+    background-color: #dd1c1a;
     text-decoration: none;
   }
   .tables .table-1 .bill {
     font-size: 12px;
-    font-weight: 500;
-    background-color: darkred;
-    margin: 5px 20px 0 25px;
+    font-weight: 700;
+    background-color: #f0c808;
+    margin: 1px 35px;
     border-radius: 10px;
-    padding: 3px;
+    padding: 2px;
   }
   .tables .table-0 {
     padding: 20px;
-    background-color: green;
+    background-color: #228B22;
     text-decoration: none;
     cursor: default;
+  }
+  .tables .table-0:hover {
+    background-color: #008000;
   }
   .tables .table span {
     text-decoration: none;
@@ -217,9 +222,10 @@
       <header>
         <nav>
             <div class="row">
-                <img src="1.png" class="logo">
+                <a href="index.php"><img src="1.png" class="logo"></a>
                 <ul class="main-nav">
-                  <li><a href="#">Home</a></li>
+                  <li><a href="index.php">Home</a></li>
+                  <li><a href="take_order.php">Take Order</a></li>
                   <li><a href="#">About</a></li>
                   <li><a href="#">Contact</a></li>
                 </ul>

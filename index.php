@@ -273,7 +273,7 @@
                 <img src="1.png" class="logo">
                 <ul class="main-nav">
                   <li><a href="index.php">Home</a></li>
-                  <li><a href="#">Take Order</a></li>
+                  <li><a href="take_order.php">Take Order</a></li>
                   <li><a href="#">About</a></li>
                   <li><a href="#">Contact</a></li>
                 </ul>

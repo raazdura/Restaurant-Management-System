@@ -174,20 +174,20 @@
     background-color: #FF4229;
   }
   
-  .total-products .fa-shopping-cart, 
+  .total-products .fa-utensils, 
   .total-orders .fa-chart-bar,
-  .total-users .fa-users,
-  .total-stores .fa-store{
+  .total-users .fa-table,
+  .total-stores .fa-dollar-sign{
     color: #fff;
     font-size: 50px;
     padding: 30px 20px 0px 0px;
     transition: 0.4s;
   }
   
-  .total-products:hover .fa-shopping-cart,
-  .total-orders:hover .fa-chart-bar,
-  .total-users:hover .fa-users,
-  .total-stores:hover .fa-store{
+  .total-products .fa-utensils, 
+  .total-orders .fa-chart-bar,
+  .total-users .fa-table,
+  .total-stores .fa-dollar-sign{
     transform: scale(1.08);
   }
   

@@ -47,13 +47,13 @@
 				   </a>
 			</li>
 
-			<li data-toggle="collapse" data-target="#products" class="collapsed">
+			<!-- <li data-toggle="collapse" data-target="#products" class="collapsed">
 				<a href="#"><i class="fas fa-cookie"></i> Menu <i class="fas fa-caret-down"></i></a>
-			</li>
-			<ul class="sub-menu collapse" id="products">
+			</li> -->
+			<!-- <ul class="sub-menu collapse" id="products">
 			  <li><a href="add_menu.php">Add Menu</a></li>
 			  <li><a href="manage_menu.php">Manage Menu</a></li>
-			</ul>
+			</ul> -->
 
 			<li data-toggle="collapse" data-target="#order" class="collapsed">
 				<a href="#"><i class="fas fa-book-open"></i> Orders <i class="fas fa-caret-down"></i></a>

@@ -296,13 +296,13 @@
 				  </a>
 			</li>
 			
-			<li  data-toggle="collapse" data-target="#users" class="collapsed">
+			<!-- <li  data-toggle="collapse" data-target="#users" class="collapsed">
 				<a href="#"><i class="fa fa-user fa-lg"></i> Users <i class="fas fa-caret-down"></i></a>
 			</li>
 			<ul class="sub-menu collapse" id="users">
 				<li><a href="add_user.php">Add Users</a></li>
 				<li><a href="manage_user.php">Manage Users</a></li>
-			</ul>
+			</ul> -->
 
 			<!-- <li data-toggle="collapse" data-target="#groups" class="collapsed">
 				<a href="#"><i class="fa fa-users fa-lg"></i> Group <i class="fas fa-caret-down"></i></a>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2023 at 02:32 AM
+-- Generation Time: Aug 07, 2023 at 05:05 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -57,6 +57,13 @@ CREATE TABLE `bill` (
   `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `bill`
+--
+
+INSERT INTO `bill` (`bill_id`, `o_id`, `amount`, `payment_method`, `status`) VALUES
+(1, 1, 1100, 'cash', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -67,6 +74,15 @@ CREATE TABLE `category` (
   `cat_id` int(11) NOT NULL,
   `cat_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`cat_id`, `cat_name`) VALUES
+(1, 'Normal Dishes'),
+(2, 'Cold Drinks'),
+(3, 'Dessert');
 
 -- --------------------------------------------------------
 
@@ -111,6 +127,39 @@ CREATE TABLE `food` (
   `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `food`
+--
+
+INSERT INTO `food` (`f_id`, `f_name`, `f_code`, `photo`, `cat_id`, `price`, `status`) VALUES
+(1, 'MOMO', 'momo', '', 1, 150, 1),
+(2, 'Burger', 'brg', '', 1, 250, 1),
+(3, 'Coke', 'coke', '', 2, 100, 1),
+(4, 'Icecream', 'ic', '', 3, 100, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order1`
+--
+
+CREATE TABLE `order1` (
+  `order_id` int(11) DEFAULT NULL,
+  `food_code` varchar(255) DEFAULT NULL,
+  `qnty` int(11) DEFAULT NULL,
+  `amount` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order1`
+--
+
+INSERT INTO `order1` (`order_id`, `food_code`, `qnty`, `amount`) VALUES
+(1, 'momo', 3, 450),
+(1, 'brg', 1, 250),
+(1, 'coke', 3, 300),
+(1, 'ic', 1, 100);
+
 -- --------------------------------------------------------
 
 --
@@ -125,6 +174,13 @@ CREATE TABLE `orders` (
   `amount` int(20) NOT NULL,
   `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`o_id`, `bill_id`, `o_time`, `t_id`, `amount`, `status`) VALUES
+(1, 1, '2023/08/05 12:28:15pm', 4, 1100, 0);
 
 -- --------------------------------------------------------
 
@@ -152,6 +208,21 @@ CREATE TABLE `tables` (
   `available` int(1) NOT NULL,
   `active` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tables`
+--
+
+INSERT INTO `tables` (`id`, `table_name`, `capacity`, `available`, `active`) VALUES
+(1, 'T1', 4, 1, 0),
+(2, 'T2', 4, 1, 0),
+(3, 'T3', 6, 1, 0),
+(4, 'T4', 6, 1, 0),
+(5, 'T5', 6, 1, 0),
+(6, 'T6', 4, 1, 0),
+(7, 'T7', 4, 1, 0),
+(8, 'T8', 4, 1, 0),
+(9, 'T9', 4, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -243,7 +314,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `bill_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `bill_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -261,13 +332,13 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -279,7 +350,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `tables`
 --
 ALTER TABLE `tables`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`

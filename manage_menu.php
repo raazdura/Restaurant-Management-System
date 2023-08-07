@@ -33,13 +33,13 @@
 				  </a>
 			</li>
 			
-			<li  data-toggle="collapse" data-target="#users" class="collapsed">
+			<!-- <li  data-toggle="collapse" data-target="#users" class="collapsed">
 				<a href="#"><i class="fa fa-user fa-lg"></i> Users <i class="fas fa-caret-down"></i></a>
-			</li>
-			<ul class="sub-menu collapse" id="users">
+			</li> -->
+			<!-- <ul class="sub-menu collapse" id="users">
 				<li><a href="add_user.php">Add Users</a></li>
 				<li><a href="manage_user.php">Manage Users</a></li>
-			</ul>
+			</ul> -->
 
 			<!-- <li data-toggle="collapse" data-target="#groups" class="collapsed">
 				<a href="#"><i class="fa fa-users fa-lg"></i> Group <i class="fas fa-caret-down"></i></a>
@@ -156,7 +156,6 @@
 									    	<tr>
 									      		<th scope="col">Food Id</th>
 									      		<th scope="col">Food Name</th>
-												<th scope="col">Photo</th>
 												<th scope="col">Price</th>
 									      		<th scope="col">Status</th>
 									      		<th scope="col">Action</th>
@@ -170,14 +169,13 @@
 											//execute query
 											if($result = mysqli_query($con,$qry))
 											{
+												echo $result->num_rows;
 												while($row = mysqli_fetch_assoc($result))
 												{
 													$fid = $row['f_id'];
 										?>
 													<tr>
 														<td><?php echo $row['f_id']; ?></td>
-														
-														<td> <img src="<?php echo 'uploads/' . $row['photo']?>" alt="user's phpto" style="height:100px; width:85px;"></td>
 														
 														<td><?php echo $row['f_name']; ?></td>
 														

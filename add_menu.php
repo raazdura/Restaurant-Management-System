@@ -296,13 +296,13 @@
 				  </a>
 			</li>
 			
-			<li  data-toggle="collapse" data-target="#users" class="collapsed">
+			<!-- <li  data-toggle="collapse" data-target="#users" class="collapsed">
 				<a href="#"><i class="fa fa-user fa-lg"></i> Users <i class="fas fa-caret-down"></i></a>
 			</li>
 			<ul class="sub-menu collapse" id="users">
 				<li><a href="add_user.php">Add Users</a></li>
 				<li><a href="manage_user.php">Manage Users</a></li>
-			</ul>
+			</ul> -->
 
 			<!-- <li data-toggle="collapse" data-target="#groups" class="collapsed">
 				<a href="#"><i class="fa fa-users fa-lg"></i> Group <i class="fas fa-caret-down"></i></a>
@@ -399,13 +399,15 @@
 									  	</div>
 									  	<div class="form-group">
 									    	<label for="price" style="font-weight: 600;">Price</label>
-									    	<input type="text" name="price" class="form-control shadow-none" id="price" placeholder="Enter Capacity of The table">
+									    	<input type="text" name="price" class="form-control shadow-none" id="price" placeholder="Enter price of the food">
 									  	</div>
                       <div class="form-group">
-                                    <div class="mb-3">
-                                      Select image to upload:
-                                      <input type="file" name="photo">
-                                    </div>
+									    	<label for="category" style="font-weight: 600;">Category</label>
+									    	<select name="category" id="">
+                          <option value="1">Normal Dishes</option>
+                          <option value="2">Cold Drinks</option>
+                          <option value="3">Desert</option>
+                        </select>
 									  	</div>
 									  	<button type="submit" name="submit" class="btn btn-primary" id="save">Add</button>
 									  	<button name="cancel" class="btn btn-danger">Cancel</button>

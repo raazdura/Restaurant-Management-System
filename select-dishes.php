@@ -35,7 +35,7 @@
 
   header{
    border: 1px solid black;
-   background-color: lightblue;
+   background-color: #086788;
    height: 100px;
   }
 
@@ -60,10 +60,11 @@
   }
 
   .main-nav li a:link, .main-nav li a:visited{
-    color: black;
+    color: #fff;
     text-decoration:none;
     text-transform:uppercase;
     font-size: 14px;
+    font-weight: 700;
     border-bottom: 2px solid transparent;
     transition:border-bottom .2s;
     /* padding: 5px 0; */
@@ -72,7 +73,7 @@
   }
 
   .main-nav li a:hover, .main-nav li a:active{
-    border-bottom: 2px solid #e74c3c;
+    border-bottom: 2px solid #fff;
     
   }
 
@@ -171,14 +172,16 @@
   }
 </style>
 <style>
+  .take-order {
+    background-color: #f2f4f3;
+  }
   .take-order h2 {
     text-align: center;
     width: 100%;
+    padding: 20px;
   }
   .dishes {
-    background-color: lightcoral;
     width: 85%;
-    border: 0.5px solid black;
     height: 100%;
     margin: auto;
   }
@@ -186,26 +189,39 @@
     display: flex;
     flex-direction: left;
     flex-wrap: wrap;
+    border: 0.5px solid black;
+    background-color: #fff;
+    margin-bottom: 20px;
   }
   .dishes .cold-drinks {
     display: flex;
     flex-direction: left;
     flex-wrap: wrap;
-  }.dishes .desert {
+    border: 0.5px solid black;
+    background-color: #fff;
+    margin-bottom: 20px;
+  }
+  .dishes .deserts {
     display: flex;
     flex-direction: left;
     flex-wrap: wrap;
+    border: 0.5px solid black;
+    background-color: #fff;
+    margin-bottom: 20px;
   }
   .normal-dishes h2, .cold-drinks h2, .deserts h2 {
-    border-bottom: 0.5px solid black;
+    border-bottom: 1px solid black;
     padding: 5px;
+    background-color: #f0c808;
   }
   .dish-name {
     border: 0.5px solid black;
-    margin: 10px;
+    margin: 20px 10px;
     min-width: 200px;
     padding: 10px;
     cursor: pointer;
+    background-color: #dd1c1a;
+    color: #fff;
   }
   .dish-name span {
     font-weight: 700;
@@ -222,9 +238,19 @@
     width: 20px;
     border: none;
     padding: 0 5px;
+    color: #000;
   }
   #quantity {
     width: 50px;
+  }
+  .dishes .order-btn {
+    margin: 10px 10px 20px 0;
+    padding: 18px;
+    font-size: 20px;
+    font-weight: 700;
+    background: #086788;
+    border: none;
+    color: #fff;
   }
 </style>
 </head>
@@ -232,9 +258,10 @@
       <header>
         <nav>
             <div class="row">
-                <img src="1.png" class="logo">
+                <a href="index.php"><img src="1.png" class="logo"></a>
                 <ul class="main-nav">
-                  <li><a href="#">Home</a></li>
+                  <li><a href="index.php">Home</a></li>
+                  <li><a href="take_order.php">Take Order</a></li>
                   <li><a href="#">About</a></li>
                   <li><a href="#">Contact</a></li>
                 </ul>
@@ -274,7 +301,7 @@
                   ?>
                 </div>
                 <div class="cold-drinks" id="cold-drinks">
-                  <h2>C0ld Drinks</h2>
+                  <h2>Cold Drinks</h2>
                   <?php
                       $sql2 = "SELECT * FROM food WHERE cat_id = 2";
                       if($result2 = mysqli_query($con,$sql2))
@@ -312,9 +339,9 @@
                               <div class="dish-name">
                                   <span><?php echo $row2['f_name'] ; ?></span>
                                   <div class="quantity-div">
-                                    <span onclick="minus('<?php echo $row2['f_code'] ; ?>');">-</span>
+                                    <span onclick="minus('<?php echo $row2['f_code'] ; ?>');" class="MP">-</span>
                                     <span id="quantity<?php echo $row2['f_code'] ; ?>">0</span>
-                                    <span onclick="plus('<?php echo $row2['f_code'] ; ?>');">+</span>
+                                    <span onclick="plus('<?php echo $row2['f_code'] ; ?>');" class="MP">+</span>
                                     <input type="text" name="qnty<?php echo $row2['f_code'] ; ?>" 
                                       id="<?php echo $row2['f_code'] ; ?>" style="display: none;"
                                       value="0">
@@ -328,9 +355,9 @@
                       } 
                   ?>
                 </div>
-                <div style="border-bottom: 0.5px solid black;">
-                  <input type="submit" name="submit" value="Order" style="margin: 10px; padding: 10px; font-size: 16px;">
-                </div>
+                <!-- <div class="order-btn"> -->
+                  <input type="submit" name="submit" value="Order" class="order-btn" style="">
+                <!-- </div> -->
             </form>
       </section>
   <script>

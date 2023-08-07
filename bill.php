@@ -33,7 +33,7 @@
 
   header{
    border: 1px solid black;
-   background-color: lightblue;
+   background-color: #086788;
    height: 100px;
   }
 
@@ -58,10 +58,11 @@
   }
 
   .main-nav li a:link, .main-nav li a:visited{
-    color: black;
+    color: #fff;
     text-decoration:none;
     text-transform:uppercase;
     font-size: 14px;
+    font-weight: 700;
     border-bottom: 2px solid transparent;
     transition:border-bottom .2s;
     /* padding: 5px 0; */
@@ -70,7 +71,7 @@
   }
 
   .main-nav li a:hover, .main-nav li a:active{
-    border-bottom: 2px solid #e74c3c;
+    border-bottom: 2px solid #fff;
     
   }
 
@@ -169,13 +170,16 @@
   }
 </style>
 <style>
+  .bill-section {
+    display: flex;
+    margin: 0.8%;
+  }
   .bill {
-    width: 60%;
+    width: 50%;
     background-color: lightsalmon;
-    margin: auto;
     text-align: center;
-    margin-top: 50px;
     padding: 10px;
+    margin-right: 0.5%;
   }
   .bill h2 {
     margin-bottom: 10px;
@@ -195,11 +199,13 @@
 
   .payment {
     background-color: lightblue;
-    width: 60%;
-    margin: auto;
-    margin-top: 20px;
+    width: 50%;
     text-align: center;
     padding: 10px;
+    margin-left: 0.5%;
+  }
+  .payment h2 {
+    padding: 20px;
   }
   .payment .payment-method {
     display: flex;
@@ -207,7 +213,7 @@
     justify-content: space-around;
   }
   .payment .payment-method div {
-    font-size: 20px;
+    font-size: 16px;
     margin: 10px;
     padding: 10px 50px;
   }
@@ -227,7 +233,7 @@
 
   }
   .payment .payment-method .wallet {
-    background-color: #fff;
+    background-color: #f2f4f3;
     color: #fff;
     width: 80%;
     padding: 0;
@@ -251,13 +257,13 @@
     width: 30%;
   }
   .bill-section form input {
-    width: 100%;
     margin: 20px 0;
     padding: 15px;
     font-size: 18px;
     font-weight: 700;
     background-color: green;
     color: #fff;
+    border: none;
   }
   .bill-section form input:hover {
     background-color: darkgreen;
@@ -268,22 +274,23 @@
       <header>
         <nav>
             <div class="row">
-                <img src="1.png" class="logo">
+                <a href="index.php"><img src="1.png" class="logo"></a>
                 <ul class="main-nav">
-                  <li><a href="#">Home</a></li>
+                  <li><a href="index.php">Home</a></li>
+                  <li><a href="take_order.php">Take Order</a></li>
                   <li><a href="#">About</a></li>
                   <li><a href="#">Contact</a></li>
                 </ul>
             </div>
         </nav>
       </header>
+      <h1 style="text-align: center; margin: 20px;">Bill and Payment</h1>
       <section class="bill-section">
         <div class="bill">
             
                 <h2>The Sudip's Restro</h2>
                 <h3>Bill Receipt</h3>
 
-                
                 <?php 
                     include 'config.php';
                     $tid = $_GET['tid'];
@@ -307,8 +314,8 @@
                 <tr>
                     <th>Dish Name</th>
                     <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Amount</th>
+                    <th>Price(Rs.)</th>
+                    <th>Amount(Rs.)</th>
                 </tr>
                 <?php
                     while($row2 = mysqli_fetch_assoc($result2)) {
@@ -316,8 +323,8 @@
                         <tr>
                             <td><?php echo $row2['f_name']; ?></td>
                             <td><?php echo $row2['qnty']; ?></td>
-                            <td><?php echo $row2['price']; ?></td>
-                            <td><?php echo $row2['amount']; ?></td>
+                            <td><?php echo $row2['price'] . "/-"; ?></td>
+                            <td><?php echo $row2['amount'] ."/-"; ?></td>
 
                         </tr>
 
@@ -331,7 +338,7 @@
                         $sql3 = "SELECT SUM(amount) as total_amount FROM order$orderId WHERE order_id = $orderId";
                         $result3 = mysqli_query($con,$sql3);
                         $row3 = mysqli_fetch_assoc($result3);
-                        echo $row3['total_amount'];
+                        echo $row3['total_amount'] . "/-";
                         ?>
                     </td>
                 </tr>
@@ -342,72 +349,85 @@
           <h2>Payment Method</h2>
           <div class="payment-method">
             <div class="cash" id="cash" onclick="cash();">
-            <i class="fa-solid fa-money-bills"></i>
+              <i class="fa-solid fa-money-bills"></i>
               <span>Cash</span>
             </div>
             <div class="card" id="card" onclick="card();">
-            <i class="fa-regular fa-credit-card"></i>
-            <span>Card</span>
+              <i class="fa-regular fa-credit-card"></i>
+              <span>Card</span>
             </div>
             <div class="wallet">
-            <div class="title">
-            <i class="fa-solid fa-wallet"></i>
-            <span>Digital Wallet</span>
-            </div>
-            <img src="esewa-seeklogo.com.svg" alt="" id="esewa" onclick="esewa();">
-            <img src="fonepay-seeklogo.com.ai" alt="" id="">
-            <img src="khalti-seeklogo.com.svg" alt="" id="khalti" onclick="khalti();">
+              <div class="title">
+                <i class="fa-solid fa-wallet"></i>
+                <span>Digital Wallet</span>
+              </div>
+              <img src="esewa-seeklogo.com.svg" alt="" id="esewa" onclick="esewa();">
+              <img src="fonepay-seeklogo.com.ai" alt="" id="">
+              <img src="khalti-seeklogo.com.svg" alt="" id="khalti" onclick="khalti();">
             </div>
           </div>
+          <form action="billpayment.php" method="POST">
+            <input type="text" name="paymentmethod" id="paymentmethod" style="display: none;">
+            <input type="text" name="orderid" id="" value="<?php echo $orderId ?>" style="display: none;">
+            <input type="text" name="amount" id="" value="<?php echo $row3['total_amount']; ?>" style="display: none;">
+            <input type="text" name="tableid" id="" value="<?php echo $tid; ?>" style="display: none;">
+            <input type="submit" name="submit" value="Payment Confirm">
+          </form>
         </div>
-        <form action="billpayment.php" method="POST">
-          <input type="text" name="paymentmethod" id="paymentmethod" style="display: none;">
-          <input type="text" name="orderid" id="" value="<?php echo $orderId ?>" style="display: none;">
-          <input type="text" name="amount" id="" value="<?php echo $row3['total_amount']; ?>" style="display: none;">
-          <input type="text" name="tableid" id="" value="<?php echo $tid; ?>" style="display: none;">
-          <input type="submit" name="submit" value="Payment Confirm">
-        </form>
+        
       </section>
       <script>
         function cash()  {
           document.getElementById("cash").style.backgroundColor = "red";
-          document.getElementById("cash").style.border = "2px solid black";
+          document.getElementById("cash").style.border = "1px solid black";
 
           document.getElementById("paymentmethod").value = "cash";
           
           document.getElementById("card").style.backgroundColor = "green";
+          document.getElementById("cash").style.border = "none";
           document.getElementById("esewa").style.backgroundColor = "transparent";
+          document.getElementById("esewa").style.border = "none";
           document.getElementById("khalti").style.backgroundColor = "transparent";
+          document.getElementById("khalti").style.border = "none";
         }
 
         function card()  {
-          document.getElementById("card").style.border = "2px solid black";
+          document.getElementById("card").style.border = "1px solid black";
           document.getElementById("card").style.backgroundColor = "red";
           document.getElementById("paymentmethod").value = "card";
           
           document.getElementById("cash").style.backgroundColor = "green";
+          document.getElementById("cash").style.border = "none";
           document.getElementById("esewa").style.backgroundColor = "transparent";
+          document.getElementById("eswa").style.border = "none";
           document.getElementById("khalti").style.backgroundColor = "transparent";
+          document.getElementById("khalti").style.border = "none";
         }
 
         function esewa()  {
-          document.getElementById("esewa").style.border = "2px solid black";
+          document.getElementById("esewa").style.border = "1px solid black";
           document.getElementById("esewa").style.backgroundColor = "red";
           document.getElementById("paymentmethod").value = "esewa";
           
           document.getElementById("cash").style.backgroundColor = "green";
+          document.getElementById("cash").style.border = "none";
           document.getElementById("card").style.backgroundColor = "green";
+          document.getElementById("card").style.border = "none";
           document.getElementById("khalti").style.backgroundColor = "transparent";
+          document.getElementById("khati").style.border = "none";
         }
 
         function khalti()  {
-          document.getElementById("khalti").style.border = "2px solid black";
+          document.getElementById("khalti").style.border = "1px solid black";
           document.getElementById("khalti").style.backgroundColor = "red";
           document.getElementById("paymentmethod").value = "khalti";
           
           document.getElementById("cash").style.backgroundColor = "green";
+          document.getElementById("cash").style.border = "none";
           document.getElementById("card").style.backgroundColor = "green";
+          document.getElementById("card").style.border = "none";
           document.getElementById("esewa").style.backgroundColor = "transparent";
+          document.getElementById("eswa").style.border = "none";
         }
       </script>
 </body>

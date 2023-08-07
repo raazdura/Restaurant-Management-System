@@ -299,10 +299,10 @@
                 <li  data-toggle="collapse" data-target="#users" class="collapsed">
                     <a href="#"><i class="fa fa-user fa-lg"></i> Users <i class="fas fa-caret-down"></i></a>
                 </li>
-                <ul class="sub-menu collapse" id="users">
+                <!-- <ul class="sub-menu collapse" id="users">
                     <li><a href="add_user.php">Add Users</a></li>
                     <li><a href="manage_user.php">Manage Users</a></li>
-                </ul>
+                </ul> -->
 
                 <li>
                     <a href="tables.php">
